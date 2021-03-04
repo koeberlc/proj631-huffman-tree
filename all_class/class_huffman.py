@@ -1,5 +1,8 @@
 from all_class.class_file import File
 from all_class.class_frequence import Frequence
+from all_class.class_tree import Node
+
+from operator import attrgetter
 
 class Huffman:
 

@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 class Frequence:
 	
 	def get_frequence(text):
