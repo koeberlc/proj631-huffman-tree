@@ -16,14 +16,12 @@ class Huffman:
 		
 		root = self.make_tree(liste_char_freq)
 
-		compressed = Convertor.get_text_compress(root, text_to_compress)
-
-
+		text_converted = Convertor.get_text_compress(root, text_to_compress)
 		#Tests
-		print(path)
-		print(text_to_compress)
-		print(liste_char_freq)
-		print(root)
+		#print(path)
+		#print(text_to_compress)
+		#print(liste_char_freq)
+		#print(root)
 	
 	def make_tree(self, list_tupple):
 		list_node = []

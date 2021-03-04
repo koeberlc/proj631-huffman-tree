@@ -27,7 +27,7 @@ class Convertor:
 					compressed_text_str += cc[1]
 
 		print(compressed_text_str)
-		print(bin(int(compressed_text_str,2)))
-		print(hex(int(compressed_text_str,2)))
-		compressed_text_str_oct = hex(int(compressed_text_str,2))
-		return compressed_text_str_oct
+		#print(bin(int(compressed_text_str,2)))
+		#compressed_text_str_bin = bin(int(compressed_text_str,2))
+		
+		return compressed_text_str
