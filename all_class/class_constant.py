@@ -1,5 +1,5 @@
 class Constant:
-	def __init__():
+	def __init__(self):
 		self.dict = {}
 
 	def getDict(self):

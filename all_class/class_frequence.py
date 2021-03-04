@@ -1,8 +1,8 @@
 from operator import itemgetter
 
 class Frequence:
-	
-	def get_frequence(text):
+
+	def get_frequence(self, text):
 		#Create a array like [[characters],[frequences]]
 		lex = [[],[]]
 
@@ -21,6 +21,6 @@ class Frequence:
 			newLex.append((lex[0][i],lex[1][i]))
 		
 		#Sort the array by frequency then by character
-		lex.sort(key=itemgetter(1,0))
+		newLex.sort(key=itemgetter(1,0), reverse=True)
 
-		return lex
+		return newLex
