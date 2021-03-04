@@ -28,6 +28,22 @@ class Convertor:
 
 		print(compressed_text_str)
 		print(bin(int(compressed_text_str,2)))
-		print(hex(int(compressed_text_str,2)))
-		compressed_text_str_oct = hex(int(compressed_text_str,2))
+		compressed_text_str_oct = Convertor.transform_to_octet(compressed_text_str)
+		
 		return compressed_text_str_oct
+
+	def transform_to_octet(text):
+		cpt = 0
+		text_octet = ""
+		text_tempo = ""
+		for c in text:
+			cpt+=1
+			text_tempo+=c
+			if(cpt >=8):
+				print(text_tempo)
+				text_octet += str(bytes([int(bin(int(text_tempo,2)),2)]))
+				cpt = 0
+				text_tempo = ""
+		print(text_octet)
+		return text_octet
+			
