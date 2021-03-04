@@ -7,8 +7,6 @@ class Huffman:
 		
 		file_to_compress = File(path)
 		text_to_compress = file_to_compress.read()
-		
-		frequence = Frequence.get_frequence(text_to_compress)
 
 		liste_char_freq = Frequence.get_frequence(text_to_compress)
 		
@@ -18,10 +16,6 @@ class Huffman:
 		#Tests
 		print(path)
 		print(text_to_compress)
-
-		print(frequence)
-	
-
 		print(liste_char_freq)
 		print(root)
 	
