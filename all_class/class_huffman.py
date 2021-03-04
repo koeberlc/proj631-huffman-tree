@@ -1,5 +1,8 @@
 from all_class.class_file import File
 from all_class.class_frequence import Frequence
+from all_class.class_tree import Node
+
+from operator import attrgetter
 
 class Huffman:
 
@@ -8,10 +11,13 @@ class Huffman:
 		file_to_compress = File(path)
 		text_to_compress = file_to_compress.read()
 		
-		frequence = Frequence.get_frequence(text_to_compress)
+		liste_char_freq = Frequence.get_frequence(text_to_compress)
 
 		#Tests
 		print(path)
 		print(text_to_compress)
-		print(frequence)
+		print(liste_char_freq)
 	
+
+
+
