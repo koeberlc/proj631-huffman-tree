@@ -1,6 +1,7 @@
 from all_class.class_file import File
 from all_class.class_frequence import Frequence
 from all_class.class_tree import Node
+from all_class.class_convertor import Convertor
 
 from operator import attrgetter
 
@@ -15,6 +16,9 @@ class Huffman:
 		
 		root = self.make_tree(liste_char_freq)
 
+		compressed = Convertor.get_text_compress(root, text_to_compress)
+
+
 		#Tests
 		print(path)
 		print(text_to_compress)
@@ -28,7 +32,7 @@ class Huffman:
 
 
 		while len(list_node)>1:
-			list_node.sort(key=attrgetter('frequence', 'label'))
+			list_node.sort(key=attrgetter('frequence'))
 			n1,n2 = list_node[0],list_node[1]
 			current_node = Node(n1.get_label()+n2.get_label(), n1.get_frequence() + n2.get_frequence(),n1,n2) 
 
