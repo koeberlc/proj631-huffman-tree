@@ -8,9 +8,9 @@ class Convertor:
 			code = ""
 			path = root.get_path(l)
 			for n in path:
-				if(n!=root):
+				if(n != root):
 					code += n.get_value()
-			list_path.append([l.get_label(),code])
+			list_path.append([l.get_label(), code])
 		
 		print(list_path)
 		return list_path
@@ -40,18 +40,18 @@ class Convertor:
 		text_octet = ""
 		text_tempo = ""
 		for c in text:
-			cpt+=1
+			cpt += 1
 			text_tempo+=c
-			if(cpt >=8):
+			if(cpt >= 8):
 				print(text_tempo)
-				text_octet += str(bytes([int(bin(int(text_tempo,2)),2)]))
+				text_octet += str(bytes([int(bin(int(text_tempo, 2)), 2)]))
 				cpt = 0
 				text_tempo = ""
 		print(text_octet)
 		return text_octet
 
 	def compression_ratio(text_to_compress, text_compressed):
-		return 1-(len(text_compressed)/(len(text_to_compress)*8))
+		return 1 - (len(text_compressed) / (len(text_to_compress) * 8))
 
 
 			

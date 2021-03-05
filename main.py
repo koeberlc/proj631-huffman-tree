@@ -1,20 +1,26 @@
-from all_class.class_constant import Constant
-from all_class.class_huffman import Huffman
+from main_program.constant import Constant
+from main_program.huffman import Huffman
 
-#Initialisation :
+# Initialisation :
 constant = Constant()
 
-constant.addElement("to_text_to_convert","text/text_to_convert/")
-constant.addElement("to_text_converted","text/text_converted/")
-constant.addElement("to_lexicon","text/lexicon/")
+constant.addElement("to_text_to_convert", "text/text_to_convert/")
+constant.addElement("to_text_converted", "text/text_converted/")
+constant.addElement("to_lexicon", "text/lexicon/")
 
-huffman_tree = Huffman()
+huffman_algo = Huffman()
 
 
 
-#Compression
+# Compression
 file = "bonjour"
 
-path = constant.getElement("to_text_to_convert") + file + ".txt"
+huffman_algo.compress(constant, file)
 
-huffman_tree.compress(path)
+
+# all_class -> main_prog -> point commun (pour faire un dossier)
+# dans readme -> expliquer les class/fichiers
+			# -> notion SOLID ?
+
+# Faire des Tests Unitaires (voir doc Unittest)
+# Faire doc de présentation (Projet, class, UML ...)
