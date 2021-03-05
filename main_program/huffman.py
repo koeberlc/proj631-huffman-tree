@@ -2,12 +2,21 @@ from main_program.file import File
 from main_program.frequence import Frequence
 from main_program.tree import Node
 from main_program.convertor import Convertor
+from main_program.constant import Constant
 
 from operator import attrgetter
 
 class Huffman:
 
-	def compress(self, constant, filename):
+	def compress(self, filename):
+
+		# Initialisation Constant :
+		constant = Constant()
+
+		constant.addElement("to_text_to_convert", "text/text_to_convert/")
+		constant.addElement("to_text_converted", "text/text_converted/")
+		constant.addElement("to_lexicon", "text/lexicon/")
+
 		path_to_compress = constant.getElement("to_text_to_convert")
 		path_to_lexicon = constant.getElement("to_lexicon")
 		path_to_compressed = constant.getElement("to_text_converted")
