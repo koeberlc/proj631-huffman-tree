@@ -27,11 +27,13 @@ class Convertor:
 
 		print(compressed_text_str)
 		print(bin(int(compressed_text_str,2)))
+
 		
 		#compressed_text_str_oct = Convertor.transform_to_octet(compressed_text_str)
 		
 		#return compressed_text_str_oct
 		return compressed_text_str
+
 
 	def transform_to_octet(text):
 		cpt = 0
@@ -47,7 +49,6 @@ class Convertor:
 				text_tempo = ""
 		print(text_octet)
 		return text_octet
-
 
 	def compression_ratio(text_to_compress, text_compressed):
 		return 1-(len(text_compressed)/(len(text_to_compress)*8))
