@@ -1,3 +1,4 @@
+from main_program.constant import Constant
 from main_program.file import File
 from main_program.frequence import Frequence
 from main_program.tree import Node
@@ -9,18 +10,19 @@ class Huffman:
     """
     Class Huffman that compress an initial text
     """
-    def compress(self, constant, filename):
+    def compress(self, filename):
         """
         Compression fonction
 
         Attrs:
-            constant (Constant): a constant object
             filename (str): name of the file that we want to compress
 
         Returns:
             str: compressed text
             float: ratio of compression
         """
+        constant = Constant()
+
         path_to_compress = constant.getElement("to_text_to_convert")
         path_to_lexicon = constant.getElement("to_lexicon")
         path_to_compressed = constant.getElement("to_text_converted")
