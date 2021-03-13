@@ -1,27 +1,36 @@
 from operator import itemgetter
 
 class Frequence:
+    """
+    Generate the frequency of each character in the initial text
+    """
+    def get_frequence(text):
+        """
+        Get frequency of each character
 
-	def get_frequence(text):
+        Attrs:
+            text (str): text we want to know the frequency of each character
 
-		# Create a array like [[characters],[frequences]]
-		lex = [[], []]
+        Returns:
+            list: List composed of character and frequency list
+        """
 
-		for c in text:
-			if not c in lex[0]:
-				lex[0].append(c)
-				lex[1].append(1)
+        lex = [[], []]
 
-			else:
-				index = lex[0].index(c)
-				lex[1][index] += 1
+        for c in text:
+            if not c in lex[0]:
+                lex[0].append(c)
+                lex[1].append(1)
 
-		# Create a new array like [[char1,freq1],[char2,freq2]]
-		newLex = []
-		for i in range(len(lex[0])):
-			newLex.append((lex[0][i], lex[1][i]))
-		
-		# Sort the array by frequency then by character
-		newLex.sort(key = itemgetter(1))
+            else:
+                index = lex[0].index(c)
+                lex[1][index] += 1
 
-		return newLex
+
+        newLex = []
+        for i in range(len(lex[0])):
+            newLex.append((lex[0][i], lex[1][i]))
+        
+        newLex.sort(key = itemgetter(1))
+
+        return newLex

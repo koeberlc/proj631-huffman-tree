@@ -6,67 +6,92 @@ from main_program.convertor import Convertor
 from operator import attrgetter
 
 class Huffman:
+    """
+    Class Huffman that compress an initial text
+    """
+    def compress(self, constant, filename):
+        """
+        Compression fonction
 
-	def compress(self, constant, filename):
-		path_to_compress = constant.getElement("to_text_to_convert")
-		path_to_lexicon = constant.getElement("to_lexicon")
-		path_to_compressed = constant.getElement("to_text_converted")
+        Attrs:
+            constant (Constant): a constant object
+            filename (str): name of the file that we want to compress
 
-		file_to_compress = File(path_to_compress + filename + ".txt")
-		file_lexicon = File(path_to_lexicon + filename + ".txt")
-		file_compressed = File(path_to_compressed + filename + ".bin")
+        Returns:
+            str: compressed text
+            float: ratio of compression
+        """
+        path_to_compress = constant.getElement("to_text_to_convert")
+        path_to_lexicon = constant.getElement("to_lexicon")
+        path_to_compressed = constant.getElement("to_text_converted")
 
-		text_to_compress = file_to_compress.read()
+        file_to_compress = File(path_to_compress + filename + ".txt")
+        file_lexicon = File(path_to_lexicon + filename + ".txt")
+        file_compressed = File(path_to_compressed + filename + ".bin")
 
-		liste_char_freq = Frequence.get_frequence(text_to_compress)
-		
-		file_lexicon.writeCharFreq(liste_char_freq)
+        text_to_compress = file_to_compress.read()
 
-		root = self.make_tree(liste_char_freq)
+        liste_char_freq = Frequence.get_frequence(text_to_compress)
+        
+        file_lexicon.writeCharFreq(liste_char_freq)
 
-		text_converted = Convertor.get_text_compress(root, text_to_compress)
-		ratio = Convertor.compression_ratio(text_to_compress,text_converted)
+        root = self.make_tree(liste_char_freq)
 
-		file_compressed.write(text_converted)
+        text_converted = Convertor.get_text_compress(root, text_to_compress)
+        ratio = Convertor.compression_ratio(text_to_compress,text_converted)
 
-		# Tests
+        file_compressed.write(text_converted)
 
-		#print(path)
-		#print(text_to_compress)
-		#print(liste_char_freq)
-		#print(root)
-		print(ratio)
-	
-	def make_tree(self, list_tupple):
-		list_node = []
-		for t in list_tupple:
-			list_node.append(Node(t[0], t[1]))
+        return text_converted, liste_char_freq, ratio
+
+    
+    def make_tree(self, list_tupple):
+        """
+        Create a tree based on a list of tupple (char, frequency)
+
+        Attrs:
+            list_tupple (tupple): tupple list of char, frequency
+
+        Returns:
+            Node: root of the created tree
+        """
+        list_node = []
+        for t in list_tupple:
+            list_node.append(Node(t[0], t[1]))
 
 
-		while len(list_node)>1:
-			list_node.sort(key=attrgetter('frequence'))
-			n1, n2 = list_node[0], list_node[1]
-			current_node = Node(n1.get_label() + n2.get_label(), n1.get_frequence() + n2.get_frequence(), n1, n2) 
+        while len(list_node) > 1:
+            list_node.sort(key=attrgetter('frequence'))
+            n1, n2 = list_node[0], list_node[1]
+            current_node = Node(None, n1.get_frequence() + n2.get_frequence(), n1, n2) 
 
-			list_node.pop(0)
-			list_node.pop(0)
-			list_node.append(current_node)
+            list_node.pop(0)
+            list_node.pop(0)
+            list_node.append(current_node)
 
-		root = list_node[0]
+        root = list_node[0]
 
-		self.set_values(root)
+        self.set_values(root)
 
-		return root
+        return root
 
-	def set_values(self, node):
-		l_child = node.get_left_child()
-		r_child = node.get_right_child()
+    def set_values(self, node):
+        """
+        Set a value of each node: 
+            each left child is set to 0
+            each right child is set to 1
 
-		if(l_child is not None):
-			l_child.value = "0"
-			self.set_values(l_child)
-		if(r_child is not None):
-			r_child.value = "1"
-			self.set_values(r_child)
+        Attrs:
+            node (Node): node that we want to set his children
+        """
+        l_child = node.get_left_child()
+        r_child = node.get_right_child()
 
-	
+        if(l_child is not None):
+            l_child.value = "0"
+            self.set_values(l_child)
+        if(r_child is not None):
+            r_child.value = "1"
+            self.set_values(r_child)
+
+    
