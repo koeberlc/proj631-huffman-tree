@@ -1,5 +1,6 @@
 from operator import itemgetter
 
+
 class Frequence:
     """
     Generate the frequency of each character in the initial text
@@ -18,7 +19,7 @@ class Frequence:
         lex = [[], []]
 
         for c in text:
-            if not c in lex[0]:
+            if c not in lex[0]:
                 lex[0].append(c)
                 lex[1].append(1)
 
@@ -26,11 +27,10 @@ class Frequence:
                 index = lex[0].index(c)
                 lex[1][index] += 1
 
-
         newLex = []
         for i in range(len(lex[0])):
             newLex.append((lex[0][i], lex[1][i]))
-        
-        newLex.sort(key = itemgetter(1))
+
+        newLex.sort(key=itemgetter(1))
 
         return newLex

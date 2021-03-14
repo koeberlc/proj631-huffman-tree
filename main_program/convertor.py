@@ -23,9 +23,8 @@ class Convertor:
                 if(n != root):
                     code += n.get_value()
             list_path.append([l.get_label(), code])
-        
-        return list_path
 
+        return list_path
 
     def get_text_compress(root, text):
         """
@@ -33,24 +32,20 @@ class Convertor:
 
         Attrs:
             root (Node): root of the tree that we want to convert
-            text (str): text we want to convert (related to the root passed as a parameter)
+            text (str): text we want to convert (related to the root parameter)
 
         Returns:
             str: converted/compressed text
         """
         list_char_compress = Convertor.get_all_char_compress(root)
         compressed_text_str = ""
-        
+
         for c in text:
             for cc in list_char_compress:
                 if(c == cc[0]):
                     compressed_text_str += cc[1]
-        
-        #compressed_text_str_oct = Convertor.transform_to_octet(compressed_text_str)
-        
-        #return compressed_text_str_oct
-        return compressed_text_str
 
+        return compressed_text_str
 
     def transform_to_octet(text):
         """
@@ -107,7 +102,3 @@ class Convertor:
         res = res/len(list_char_compress)
 
         return res
-
-
-
-            

@@ -3,13 +3,12 @@ class Node:
     A node have a label, up to 2 children, a frequency and a value
     A leaf is related to one character
     """
-    def __init__(self, label, frequence, left_child = None, right_child = None):
+    def __init__(self, label, frequence, left_child=None, right_child=None):
         self.label = label
         self.frequence = frequence
         self.left_child = left_child
         self.right_child = right_child
         self.value = None
-
 
     def get_left_child(self):
         return self.left_child
@@ -26,7 +25,7 @@ class Node:
     def get_value(self):
         return self.value
 
-    def get_list_prefixe(self, node = "Error"):
+    def get_list_prefixe(self, node="Error"):
         """
         Read the tree (related to a root) in a prefix order
 
@@ -40,10 +39,12 @@ class Node:
             node = self
         res = ""
 
-        if (not node is None):
-            res = node.get_label() + node.get_list_prefixe(node.get_left_child()) + node.get_list_prefixe(node.get_right_child())
-        return res
+        if (node not is None):
+            res = node.get_label() +
+            node.get_list_prefixe(node.get_left_child()) +
+            node.get_list_prefixe(node.get_right_child())
 
+        return res
 
     def is_leaf(self):
         """
@@ -52,8 +53,8 @@ class Node:
         Returns:
             boolean: if the node is a leaf
         """
-        return (self.get_right_child() is None) and (self.get_right_child() is None)
-
+        return (self.get_right_child() is None) and
+        (self.get_right_child() is None)
 
     def get_all_node(self):
         """
@@ -83,7 +84,7 @@ class Node:
                 list_leaf.append(n)
         return list_leaf
 
-    def get_path(self,node):
+    def get_path(self, node):
         """
         Get the path from the current node to the node passed as a parameter
 
@@ -91,7 +92,7 @@ class Node:
             node (Node): Searched node
 
         Returns:
-            list: node list related to the path from current node to searched node
+            list: list related to the path from current node to searched node
         """
         path = []
         list_node = self.get_all_node()

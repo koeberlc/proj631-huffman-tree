@@ -20,7 +20,7 @@ class Constant:
     def addElement(self, key, value):
         """
         Add an element to the dictionary
-        
+
         Attrs:
             key (str): name of the element
             value (str): value of the element
