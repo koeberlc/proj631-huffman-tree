@@ -88,5 +88,26 @@ class Convertor:
         """
         return 1 - (len(text_compressed) / (len(text_to_compress) * 8))
 
+    def get_average_storage_bits(root):
+    	"""
+    	Return the average storage bits of a compressed character
+
+    	Attrs:
+    	    root (Node): root of the tree that we want to convert
+
+    	Returns:
+    		float: average storage bits of a compressed character
+    	"""
+        list_char_compress = Convertor.get_all_char_compress(root)
+
+        res = 0
+        for l in list_char_compress:
+        	res += len(l[1])
+
+        res = res/len(list_char_compress)
+
+        return res
+
+
 
             
