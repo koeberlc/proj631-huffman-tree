@@ -6,6 +6,7 @@ from main_program.convertor import Convertor
 
 from operator import attrgetter
 
+
 class Huffman:
     """
     Class Huffman that compress an initial text
@@ -34,22 +35,20 @@ class Huffman:
         text_to_compress = file_to_compress.read()
 
         liste_char_freq = Frequence.get_frequence(text_to_compress)
-        
+
         file_lexicon.writeCharFreq(liste_char_freq)
 
         root = self.make_tree(liste_char_freq)
 
         text_converted = Convertor.get_text_compress(root, text_to_compress)
-        ratio = Convertor.compression_ratio(text_to_compress,text_converted)
+        ratio = Convertor.compression_ratio(text_to_compress, text_converted)
 
         average_storage_bit = Convertor.get_average_storage_bits(root)
 
         file_compressed.write(text_converted)
 
-
         return text_converted, average_storage_bit, liste_char_freq, ratio
 
-    
     def make_tree(self, list_tupple):
         """
         Create a tree based on a list of tupple (char, frequency)
@@ -64,11 +63,13 @@ class Huffman:
         for t in list_tupple:
             list_node.append(Node(t[0], t[1]))
 
-
         while len(list_node) > 1:
             list_node.sort(key=attrgetter('frequence'))
             n1, n2 = list_node[0], list_node[1]
-            current_node = Node(None, n1.get_frequence() + n2.get_frequence(), n1, n2) 
+            current_node = Node(None,
+                                n1.get_frequence() + n2.get_frequence(),
+                                n1,
+                                n2)
 
             list_node.pop(0)
             list_node.pop(0)
@@ -82,7 +83,7 @@ class Huffman:
 
     def set_values(self, node):
         """
-        Set a value of each node: 
+        Set a value of each node:
             each left child is set to 0
             each right child is set to 1
 
@@ -98,5 +99,3 @@ class Huffman:
         if(r_child is not None):
             r_child.value = "1"
             self.set_values(r_child)
-
-    

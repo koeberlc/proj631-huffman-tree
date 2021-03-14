@@ -30,7 +30,8 @@ class File:
 
     def writeCharFreq(self, list_char_freq):
         """
-        Transform the text with character and frequency list before writing it to the file
+        Transform the text with character/frequency list
+        And write it to the file
 
         Attrs:
             list_char_freq (str): character and frequency list
