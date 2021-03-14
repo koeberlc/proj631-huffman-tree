@@ -42,9 +42,12 @@ class Huffman:
         text_converted = Convertor.get_text_compress(root, text_to_compress)
         ratio = Convertor.compression_ratio(text_to_compress,text_converted)
 
+        average_storage_bit = Convertor.get_average_storage_bits(root)
+
         file_compressed.write(text_converted)
 
-        return text_converted, liste_char_freq, ratio
+
+        return text_converted, average_storage_bit, liste_char_freq, ratio
 
     
     def make_tree(self, list_tupple):
