@@ -1,6 +1,6 @@
 from main_program.huffman import Huffman
 
-# Initialization :
+# Compression initialization:
 huffman_algo = Huffman()
 
 
